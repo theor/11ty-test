@@ -60,12 +60,21 @@
       <nav>
         <div id="nav">
           <h1><a href="{{ '/' | url }}" title="Homepage">{{ metadata.title }}</a></h1>
+          <ul>
           {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
           {%- for entry in collections.all | eleventyNavigation %}
+          <li>
             <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+          </li>
           {%- endfor %}
+          </ul>
         </div>
         <div id="reading-progress" aria-hidden="true"></div>
+        <div id="avatar-container">
+          <div id="avatar-img-border">
+            <img id="avatar-img" src="/img/avatar-icon.png">
+          </div>
+        </div>
       </nav>
       <h1>{{ title }}</h1>
       {% block extraArticleHeader %}{% endblock %}

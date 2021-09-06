@@ -199,6 +199,7 @@ addEventListener(
 
 if (window.ResizeObserver && document.querySelector("header nav #nav")) {
   var progress = document.getElementById("reading-progress");
+  var icon = document.getElementById("avatar-container");
 
   var timeOfLastScroll = 0;
   var requestedAniFrame = false;
@@ -220,6 +221,7 @@ if (window.ResizeObserver && document.querySelector("header nav #nav")) {
       100
     );
     progress.style.transform = `translate(-${100 - percent}vw, 0)`;
+    icon.style.opacity = percent > 0 ? "0" : "1";
     if (Date.now() - timeOfLastScroll < 3000) {
       requestAnimationFrame(updateProgress);
       requestedAniFrame = true;
