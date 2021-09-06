@@ -108,7 +108,7 @@ The result of the conversion is an expression in reverse Polish notation (RPN). 
 An expression in infix notation like `(2 + 3) * 4` will be noted `2 3 + 4 *`. RPN is trivial to evaluate using a stack: most opcode will only push and pop from that stack.  A `multiply` operator just does `push(pop() * pop())`.
 
 The previous expression uses 3 types of instructions:
-```
+``` text
 Const 2
 Const 3
 Add
@@ -161,7 +161,7 @@ Parameters are provided to the evaluator as a `float3` array, which is indexed b
 In the case of nested expressions,  there are two cases:
 - If the expression resolves to a simple constant, it is inlined. For a set of expressions `x = 42; y = x; result = 2*y` the resulting instructions are `CONST 2; CONST 42; MUL`
 - Otherwise, the formulas are evaluated at the beginning of the program, their result left on the stack, then each usage is an instruct `LOAD $stackIndex` that reads the expression result in the stack and pushes it again on top. For example, given `x = 42 * 2; result = x * x`, the result is:
-```
+``` text
 CONSTANT 42
 CONSTANT 2
 MUL // pushed 84 at index 0 on the stack

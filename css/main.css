@@ -769,7 +769,7 @@ th {
   vertical-align: top;
 }
 thead th {
-  border-bottom: 1px solid #f9c412;
+  border-bottom: 1px solid var(--primary);
 }
 table {
   display: table;
@@ -783,13 +783,13 @@ pre {
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
 }
 pre code:not([class]) {
-  padding: 1.5em;
+  /* padding: 1.5em; */
   overflow-x: scroll;
 }
 code,
 kbd {
   border-radius: 0.3em;
-  color: #e2777a;
+  color: #76d9e6;
   padding: 0 0.3em;
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
   font-size: 90%;
@@ -802,7 +802,7 @@ kbd {
   color: #7ec699;
 }
 mark {
-  background: #f9c412;
+  background: var(--primary);
   padding: 0 0.3em;
 }
 h1,
@@ -819,7 +819,7 @@ h6 {
   font-style: italic;
 }
 a {
-  color: #f9c412;
+  color: var(--primary);
   text-decoration: none;
 }
 a:hover {
@@ -953,7 +953,7 @@ input[type="submit"][disabled] {
 button:not([disabled]),
 button[type="submit"],
 input[type="submit"] {
-  background: #f9c412;
+  background: var(--primary);
   color: #181818;
 }
 button:not([disabled]):hover,
@@ -1138,10 +1138,10 @@ dd {
   margin-left: 2.25em;
 }
 dd + dt {
-  border-top: 1px solid #f9c412;
+  border-top: 1px solid var(--primary);
 }
 blockquote {
-  border-left: 1px solid #f9c412;
+  border-left: 1px solid var(--primary);
   padding: 0 1.5em;
   margin: 1.5em 0 1.5em 1.5em;
 }
