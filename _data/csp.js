@@ -39,6 +39,7 @@ const CSP = {
     ["script-src", SELF, /* Replaced by csp.js plugin */ "HASHES"],
     // Inline CSS is allowed.
     ["style-src", quote("unsafe-inline")],
+    ["font-src", SELF, "https://fonts.googleapis.com/", "https://fonts.gstatic.com/"],
     // Images may also come from data-URIs.
     ["img-src", SELF, "data:"],
 
