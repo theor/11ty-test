@@ -36,6 +36,7 @@ const { gif2mp4 } = require("./video-gif");
 
 const processImage = async (img, outputPath) => {
   let src = img.getAttribute("src");
+  console.warn("REPLACE", src, "IN", outputPath);
   if (/^(https?\:\/\/|\/\/)/i.test(src)) {
     return;
   }
@@ -44,7 +45,7 @@ const processImage = async (img, outputPath) => {
     src =
       "/" +
       path.relative("./_site/", path.resolve(path.dirname(outputPath), src));
-    if (path.sep == "\\") {
+      if (path.sep == "\\") {
       src = src.replace(/\\/g, "/");
     }
   }
@@ -52,7 +53,7 @@ const processImage = async (img, outputPath) => {
   try {
     dimensions = await sizeOf("_site/" + src);
   } catch (e) {
-    console.warn(e.message, src);
+    console.warn("AAAA " + e.message, src);
     return;
   }
   if (!img.getAttribute("width")) {
@@ -64,6 +65,7 @@ const processImage = async (img, outputPath) => {
   }
   if (dimensions.type == "gif") {
     const videoSrc = await gif2mp4(src);
+    console.warn("GIF", src, videoSrc);
     const video = img.ownerDocument.createElement(
       /AMP/i.test(img.tagName) ? "amp-video" : "video"
     );
