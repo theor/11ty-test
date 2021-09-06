@@ -56,7 +56,7 @@ describe("check build output for a generic post", () => {
     });
 
     it("should have inlined css", () => {
-      const css = select("style");
+      const css = select("style:not([data-href])");
       expect(css).to.match(/header nav/);
       expect(css).to.not.match(/test-dead-code-elimination-sentinel/);
     });
