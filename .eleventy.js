@@ -56,12 +56,14 @@ const localImages = require("./third_party/eleventy-plugin-local-images/.elevent
 const CleanCSS = require("clean-css");
 const GA_ID = require("./_data/metadata.json").googleAnalyticsId;
 const eleventyGoogleFonts = require("eleventy-google-fonts");
+const pluginSass = require("eleventy-plugin-sass");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(eleventyGoogleFonts);
+  eleventyConfig.addPlugin(pluginSass, { outputDir: "css", remap: true});
 
   eleventyConfig.addPlugin(localImages, {
     distPath: "_site",
