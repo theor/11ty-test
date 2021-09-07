@@ -383,6 +383,25 @@
         padding-top: 20px;
       }
     }
+    z-index: 2;
+    position: relative;
+  }
+  
+  #reading-progress {
+    z-index: 1;
+    background-color: var(--primary);
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 10px;
+    transform: translate(-100vw, 0);
+    will-change: transform;
+    pointer-events: none;
+  }
+  
+  #posts li {
+    margin-bottom: 0.5em;
   }
   
   #avatar-container {
@@ -497,27 +516,7 @@
     font-style: italic;
   }
   
-  #nav {
-    z-index: 2;
-    position: relative;
-  }
   
-  #reading-progress {
-    z-index: 1;
-    background-color: var(--primary);
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 10px;
-    transform: translate(-100vw, 0);
-    will-change: transform;
-    pointer-events: none;
-  }
-  
-  #posts li {
-    margin-bottom: 0.5em;
-  }
   
   /*
   
