@@ -63,7 +63,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(eleventyGoogleFonts);
-  eleventyConfig.addPlugin(pluginSass, { outputDir: "css", remap: true});
+  eleventyConfig.addPlugin(pluginSass, {
+    watch: ['**/*.{scss,sass}', '!node_modules/**'],
+    outputDir: "css",
+    remap: true,
+  });
 
   eleventyConfig.addPlugin(localImages, {
     distPath: "_site",
