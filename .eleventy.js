@@ -55,17 +55,15 @@ const markdownItAnchor = require("markdown-it-anchor");
 const localImages = require("./third_party/eleventy-plugin-local-images/.eleventy.js");
 const CleanCSS = require("clean-css");
 const GA_ID = require("./_data/metadata.json").googleAnalyticsId;
-const eleventyGoogleFonts = require("eleventy-google-fonts");
 const pluginSass = require("eleventy-plugin-sass");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
-  eleventyConfig.addPlugin(eleventyGoogleFonts);
   eleventyConfig.addPlugin(pluginSass, {
     watch: ['**/*.{scss,sass}', '!node_modules/**'],
-    outputDir: "css", 
+    outputDir: "css",
     remap: true,
   });
 
