@@ -28,11 +28,9 @@
   {% if image %}
   <meta property="og:image" content="{{ image | absoluteUrl(metadata.url) }}">
   {% endif %}
-
-  {% eleventyGoogleFonts
-  'https://fonts.googleapis.com/css?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap'
-  %}
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=optional" type="font/woff2" crossorigin>
   <link rel="canonical" href="{{ metadata.url }}{{ canonicalUrl or page.url }}">
   <!-- This is a blog and so it SHOULD be safe and it is nice for the web
          to send referrers cross-origin.
