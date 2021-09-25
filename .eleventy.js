@@ -65,7 +65,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyGoogleFonts);
   eleventyConfig.addPlugin(pluginSass, {
     watch: ['**/*.{scss,sass}', '!node_modules/**'],
-    outputDir: "css",
+    outputDir: "css", 
     remap: true,
   });
 

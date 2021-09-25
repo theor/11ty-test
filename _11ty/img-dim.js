@@ -36,7 +36,7 @@ const { gif2mp4 } = require("./video-gif");
 
 const processImage = async (img, outputPath) => {
   let src = img.getAttribute("src");
-  console.warn("REPLACE", src, "IN", outputPath);
+  // console.warn("REPLACE", src, "IN", outputPath);
   if (/^(https?\:\/\/|\/\/)/i.test(src)) {
     return;
   }

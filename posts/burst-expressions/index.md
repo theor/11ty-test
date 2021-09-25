@@ -10,7 +10,7 @@ layout: post
 I recently implemented the famous Marching Cubes algorithm ([Wikipedia](https://en.wikipedia.org/wiki/Marching_cubes)) using density function to describe the terrain ([GPU Gems chapter about that](https://developer.nvidia.com/gpugems/gpugems3/part-i-geometry/chapter-1-generating-complex-procedural-terrains-using-gpu)). Having to recompile the code to tweak the density function was too slow, so I wrote a fast expression evaluator for Unity, available on [GitHub](https://github.com/theor/BurstExpressions).
 
 <!--more-->
-![as d](./header.gif) 
+![as d](./header.gif)  
 
 {{< youtube id="h3Tax5hBx6w" >}}
 
