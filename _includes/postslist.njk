@@ -1,8 +1,33 @@
-<ul>
-{% for post in postslist | reverse %}
-  <li>
-    <a href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time  datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-  </li>
-{% endfor %}
-</ul>
+<div role="main" class="container">
+  {% for post in postslist | reverse %}
+    {% set wc = post.templateContent | striptags | wordcount %}
+    {% set wPerMinute = (wc / 240) + 1 %}
+    {% set preview = post.templateContent | excerpt if post.templateContent | hasMoretag else post.templateContent | truncate(140) %}
+
+    <aside></aside>
+    <article class="post-preview">
+      <a href="{{ post.url | url }}">
+        <h2>{{ post.data.title }}</h2>
+        {% if post.data.image %}
+        <div class="post-preview-media"><img src="{{ post.data.image | absUrl(post.url) }}"></div>
+        {% endif %}
+      </a>
+      <p class="post-meta">
+        <span class="icon-pencil"></span>Posted on
+        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>&nbsp;<span class="icon-clock"></span>
+        {{ wPerMinute | round }} minutes&nbsp;<span class="icon-book"></span>
+        {{ wc }} words</p>
+      <div class="post-entry">
+        {{ preview | striptags | safe }}
+        <a href="{{ post.url | url }}">Continue reading &rarr;</a>
+        <div class="post-tags">
+          {% for tag in post.data.tags %}
+            {% if tag != "posts" %}
+              <a href="/tags/{{tag}}">#{{ tag }}</a>
+            {% endif %}
+          {% endfor %}
+        </div> 
+      </div>
+    </article>
+  {% endfor %}
+</div>

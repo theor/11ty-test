@@ -56,8 +56,42 @@ const localImages = require("./third_party/eleventy-plugin-local-images/.elevent
 const CleanCSS = require("clean-css");
 const GA_ID = require("./_data/metadata.json").googleAnalyticsId;
 const pluginSass = require("eleventy-plugin-sass");
-
+const util = require('util')
+const eleventyReadMorePlugin = require("eleventy-plugin-read-more");
+ 
 module.exports = function (eleventyConfig) {
+  
+  eleventyConfig.addPlugin(eleventyReadMorePlugin);
+  eleventyConfig.addFilter('absUrl', (url, context) => {
+    console.log("ABS URL ",url);
+    const isUrlAbsolute = (url) => (url.indexOf('//') === 0 ? true : url.indexOf('://') === -1 ? false : url.indexOf('.') === -1 ? false : url.indexOf('/') === -1 ? false : url.indexOf(':') > url.indexOf('/') ? false : url.indexOf('://') < url.indexOf('.') ? true : false);
+    if(isUrlAbsolute(url))
+      return url;
+    return context + url;
+   });
+  eleventyConfig.addFilter('dump', obj => {
+    const dump = util.inspect(obj, {color: true});
+    // console.log(dump);
+    return dump
+  });
+  eleventyConfig.addFilter('json', obj => {
+    const getCircularReplacer = () => {
+      const seen = new WeakSet();
+      return (key, value) => {
+        if (typeof value === "object" && value !== null) {
+          if (seen.has(value)) {
+            return;
+          }
+          seen.add(value);
+        }
+        return value;
+      };
+    };
+  
+    const json = JSON.stringify(obj, getCircularReplacer(), 4);
+    console.log(json);
+    return json;
+  });
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
@@ -183,6 +217,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_headers");
 
   // We need to rebuild upon JS change to update the CSP.
+  eleventyConfig.addWatchTarget(".eleventy.js");
   eleventyConfig.addWatchTarget("./js/");
   // We need to rebuild on CSS change to inline it.
   // eleventyConfig.addWatchTarget("./css/");

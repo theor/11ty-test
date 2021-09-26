@@ -72,6 +72,7 @@ const processImage = async (img, outputPath) => {
     [...img.attributes].map(({ name, value }) => {
       video.setAttribute(name, value);
     });
+    console.warn(video);
     video.src = videoSrc;
     video.setAttribute("autoplay", "");
     video.setAttribute("muted", "");
